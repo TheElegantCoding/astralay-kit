@@ -1,55 +1,33 @@
-import { resolve } from 'node:path';
-
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
-import { loadEnv } from 'vite';
+import { resolve } from 'node:path';
 
-import { inline } from './script/module/inline/inline';
-
-const environment = loadEnv(process.env.NODE_ENV ?? 'development', './src/global/env', '');
+import { environment } from './src/global/configuration/environment';
 
 const dirname = resolve();
 
+const { BASE_URL, PORT } = environment;
+
 export default defineConfig({
-  build:
-  {
-    assetsPrefix: process.env.NODE_ENV === 'production' ? environment.BASE_URL : undefined,
+  build: {
+    assetsPrefix: BASE_URL,
     inlineStylesheets: 'never'
   },
-  integrations:
-  [
-    sitemap({ lastmod: new Date() }),
-    partytown({ config: { forward: [ 'dataLayer.push' ] } }),
-    inline({ prefixPath: environment.BASE_URL })
-  ],
+  integrations: [sitemap({ lastmod: new Date() }), partytown({ config: { forward: ['dataLayer.push'] } })],
   output: 'static',
-  server:
-  {
+  server: {
     host: true,
-    open: true
+    open: true,
+    port: PORT
   },
-  site: environment.BASE_URL,
+  site: BASE_URL,
   trailingSlash: 'never',
-  vite:
-  {
-    css:
-    {
-      preprocessorOptions:
-      {
-        scss:
-        {
-          api: 'modern-compiler'
-        }
-      }
-    },
+  vite: {
     envDir: './src/global/env',
-    resolve:
-    {
-      alias:
-      {
-        '@global/': resolve(dirname, './src/global'),
-        '@module/': resolve(dirname, './src/module')
+    css: {
+      preprocessorOptions: {
+        scss: { loadPaths: [resolve(dirname, 'src')] }
       }
     }
   }

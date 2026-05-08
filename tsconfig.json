@@ -1,19 +1,26 @@
 {
-  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "target": "ESNext",
+    "jsx": "preserve",
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "baseUrl": "./",
     "rootDir": "./",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "paths": {
-      "@global/*": [ "src/global/*" ],
-      "@module/*": [ "src/module/*" ],
-      "@public/*": [ "public/*" ],
-      "@script/*": [ "script/*" ]
+      "@global/*": ["src/global/*"],
+      "@module/*": ["src/module/*"],
+      "@public/*": ["public/*"],
+      "@script/*": ["script/*"]
     },
+    "ignoreDeprecations": "6.0",
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
+    "allowJs": true,
     "strict": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
@@ -40,5 +47,7 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["./.astro/types.d.ts", "./**/*"],
+  "exclude": ["./dist"]
 }

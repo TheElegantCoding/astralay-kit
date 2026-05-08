@@ -1,21 +1,32 @@
 const autoprefixer = require('autoprefixer');
-const purgecss = require('@fullhuman/postcss-purgecss').default;
+const purgecss = require('@fullhuman/postcss-purgecss');
+const combineQueries = require('postcss-combine-media-query');
 
-module.exports =
-{
+module.exports = {
   plugins: [
-    autoprefixer(),
     purgecss({
       content: [
-        './src/**/*.html',
         './src/**/*.astro',
-        './src/**/*.tsx',
-        './src/**/*.ts'
+        './src/**/*.{tsx,ts,jsx,js}',
+        './src/**/*.html',
+        './public/**/*.html',
       ],
-      dynamicAttributes: [ 'data-animate' ],
+      safelist: {
+        standard: [
+          /^delay-/,
+          /active$/,
+          /lenis/,
+          /loading$/,
+          /visible$/
+        ]
+      },
+      dynamicAttributes: ['data-animate'],
       fontFace: true,
       keyframes: true,
-      variables: true
-    })
+      variables: true,
+      rejected: true
+    }),
+    autoprefixer(),
+    combineQueries()
   ]
 };

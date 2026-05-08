@@ -1,12 +1,13 @@
 /// <reference path="../.astro/types.d.ts" />
-type ImportMetaEnv =
-{
-  readonly PORT: number;
+type ImportMetaEnv = {
+  readonly PORT: string;
+  readonly MODE: string;
+  readonly DEV: boolean;
+  readonly SSR: boolean;
   readonly BASE_URL: string;
-  readonly MODE: 'staging' | 'production' | 'development';
+  readonly NODE_ENV: 'test' | 'production' | 'development';
 };
 
-interface ImportMeta
-{
+interface ImportMeta {
   readonly env: ImportMetaEnv;
 }

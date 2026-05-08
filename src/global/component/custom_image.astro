@@ -32,7 +32,7 @@ const imageUrl = source.startsWith('http') ? source : `${baseUrl}${source}`;
 ---
 <Skeleton
   class='custom-image'
-  isLoading={!disableLoader}
+  visible={!disableLoader}
   class:list={classSkeleton}
 >
   <picture class:list={classContainer}>

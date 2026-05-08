@@ -1,9 +1,0 @@
-@use '@global/style/global' as *;
-
-.form
-{
-  display: flex;
-  flex-direction: column;
-  gap: $spacing_20;
-  padding: $spacing_12;
-}

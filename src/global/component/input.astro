@@ -1,17 +1,17 @@
 ---
 import Icon from '@global/component/icon.astro';
-import Show from '@global/component/show.astro';
+
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'input'> &
-{
-  iconRight?: string;
-  iconLeft?: string;
-  required?: boolean;
-  textHelperRight?: string;
-  textHelperLeft?: string;
-  label: string;
-}
+type Props = HTMLAttributes<'input'>
+  & {
+    label: string;
+    iconLeft?: string;
+    iconRight?: string;
+    required?: boolean;
+    textHelperLeft?: string;
+    textHelperRight?: string;
+  };
 
 const {
   iconLeft,
@@ -24,41 +24,41 @@ const {
   ...rest
 } = Astro.props;
 ---
-<div class="input">
-  <label class="input__container" for={name}>
-    <Show when={iconLeft}>
-      <div class="input__container-icon">
+<div class='input'>
+  <label for={name} class='input__container'>
+    {iconLeft && (
+      <div class='input__container-icon'>
         <Icon name='square' class='input__icon' />
       </div>
-    </Show>
-    <div class="input__container-tag">
+    )}
+    <div class='input__container-tag'>
       <input
         id={name}
         name={name}
-        class="input__tag"
+        class='input__tag'
         {...rest}
       />
-      <span class="input__label">
+      <span class='input__label'>
         {label}
-        <Show when={required}>
-          <span class="input__label-required">*</span>
-        </Show>
+        {required && (
+          <span class='input__label-required'>*</span>
+        )}
       </span>
     </div>
-    <Show when={iconRight}>
-      <div class="input__container-icon">
+    {iconRight && (
+      <div class='input__container-icon'>
         <Icon name='square' class='input__icon' />
       </div>
-    </Show>
+    )}
   </label>
-  <Show when={textHelperLeft || textHelperRight}>
-    <div class="input__container-helper">
-      <Show when={textHelperLeft}>
-        <div class="input__text-helper">{textHelperLeft}</div>
-      </Show>
-      <Show when={textHelperRight}>
-        <div class="input__text-helper input__text-helper-right">{textHelperRight}</div>
-      </Show>
+  {(textHelperLeft || textHelperRight) && (
+    <div class='input__container-helper'>
+      {textHelperLeft && (
+        <div class='input__text-helper'>{textHelperLeft}</div>
+      )}
+      {textHelperRight && (
+        <div class='input__text-helper input__text-helper-right'>{textHelperRight}</div>
+      )}
     </div>
-  </Show>
+  )}
 </div>

@@ -1,36 +1,37 @@
-@use '@global/style/global' as *;
-
+@use 'global/style/config' as *;
 @include font_face(
   $name: 'Inter',
-  $path: '/asset/font/inter/Inter-Light',
+  $path: '/asset/font/inter/inter_light',
   $weight: 300,
   $local: 'Inter Light'
 );
-
 @include font_face(
   $name: 'Inter',
-  $path: '/asset/font/inter/Inter-Regular',
+  $path: '/asset/font/inter/inter_regular',
   $weight: 400,
   $local: 'Inter'
 );
-
 @include font_face(
   $name: 'Inter',
-  $path: '/asset/font/inter/Inter-SemiBold',
+  $path: '/asset/font/inter/inter_medium',
+  $weight: 500,
+  $local: 'Inter Medium'
+);
+@include font_face(
+  $name: 'Inter',
+  $path: '/asset/font/inter/inter_semibold',
   $weight: 600,
   $local: 'Inter SemiBold'
 );
-
 @include font_face(
   $name: 'Inter',
-  $path: '/asset/font/inter/Inter-Bold',
+  $path: '/asset/font/inter/inter_bold',
   $weight: 700,
   $local: 'Inter Bold'
 );
-
 @include font_face(
   $name: 'Inter',
-  $path: '/asset/font/inter/Inter-Black',
+  $path: '/asset/font/inter/inter_black',
   $weight: 800,
   $local: 'Inter Black'
 );
@@ -38,16 +39,24 @@
 h1
 {
   font-size: $h1;
+  line-height: 1.1;
 }
 
 h2
 {
   font-size: $h2;
+  line-height: 1.2;
 }
 
-h3
+h3, .h3
 {
   font-size: $h3;
+  line-height: 1.2;
+}
+
+h4, h5, h6
+{
+  line-height: 1.3;
 }
 
 h4
@@ -68,4 +77,5 @@ h6
 p
 {
   font-size: $h6;
+  line-height: 1.6rem;
 }

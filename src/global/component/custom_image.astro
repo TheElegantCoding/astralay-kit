@@ -1,100 +1,88 @@
 ---
-import Show from '@global/component/show.astro';
 import Skeleton from '@global/component/skeleton.astro';
 import { removeTrailingSlash } from '@global/util/link';
 import { replaceExtension } from '@global/util/replace_extension';
 
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'img'> &
-{
+type Props = HTMLAttributes<'img'> & {
   readonly src: string;
   readonly alt: string;
-  readonly width: number;
-  readonly class?: string;
-  readonly height: number;
   readonly priority?: boolean;
+  readonly classSkeleton?: string;
   readonly disableLoader?: boolean;
+  readonly classContainer?: string;
   readonly formats?: Array<'avif' | 'webp'>;
-  readonly classStyle?: Partial<Record<'skeleton' | 'container', string>>;
 };
 
 const {
   alt,
   class: classImage,
-  classStyle,
+  classContainer,
+  classSkeleton,
   disableLoader,
-  formats = [ 'avif', 'webp' ],
-  height,
+  formats = ['avif', 'webp'],
   priority = false,
   src: source,
-  width,
   ...rest
 } = Astro.props;
 
-const baseUrl = removeTrailingSlash(Astro.site as URL);
-const imageUrl = `${baseUrl}${source}`;
+const baseUrl = removeTrailingSlash(Astro.site?.toString() || '');
+const imageUrl = source.startsWith('http') ? source : `${baseUrl}${source}`;
 ---
-<div class='custom-image' class:list={[ classStyle?.container ]}>
-  <picture>
-    <Show when={formats.includes('avif')}>
-      <source type='image/avif' srcset={replaceExtension(imageUrl, 'avif')} />
-    </Show>
-    <Show when={formats.includes('webp')}>
-      <source type='image/webp' srcset={replaceExtension(imageUrl, 'webp')} />
-    </Show>
+<Skeleton
+  class='custom-image'
+  isLoading={!disableLoader}
+  class:list={classSkeleton}
+>
+  <picture class:list={classContainer}>
+    <slot />
+    {formats.includes('avif') && (
+      <source
+        type='image/avif'
+        sizes={rest.sizes}
+        srcset={replaceExtension(imageUrl, 'avif')}
+      />
+    )}
+    {formats.includes('webp') && (
+      <source
+        type='image/webp'
+        sizes={rest.sizes}
+        srcset={replaceExtension(imageUrl, 'webp')}
+      />
+    )}
     <img
       alt={alt}
-      width={width}
       src={imageUrl}
-      height={height}
-      class:list={classImage}
+      class='custom-image__tag'
+      class:list={[classImage]}
       loading={priority ? 'eager' : 'lazy'}
       decoding={priority ? 'auto' : 'async'}
       fetchpriority={priority ? 'high' : 'auto'}
       {...rest}
     />
   </picture>
-  <Show when={!disableLoader}>
-    <Skeleton class='custom-image__skeleton' class:list={[ classStyle?.skeleton ]} />
-  </Show>
-  <Show when={Astro.slots.has('default')}>
-    <div class='custom-image__content custom-image__content--disable'>
-      <slot />
-    </div>
-  </Show>
-</div>
+</Skeleton>
 
 <script>
-  const picture = document.querySelectorAll('.custom-image');
+  const skeleton = document.querySelectorAll('.custom-image');
 
-  picture.forEach((element) =>
-  {
-    const image = element.querySelector('img');
+  skeleton.forEach((item) => {
+    const image = item.querySelector('img');
 
-    const onImageLoad = () =>
-    {
-      const skeleton = element.querySelector('.custom-image__skeleton');
-      const content = element.querySelector('.custom-image__content');
-
-      skeleton?.classList.remove('skeleton--active');
-      content?.classList.remove('custom-image__content--disable');
-    };
-
-    const onImageError = (event: Event) =>
-    {
+    const onImageError = (event: Event) => {
       const currentImage = event.currentTarget as HTMLImageElement;
-
       currentImage.src = image?.src as string;
     };
 
-    if(image?.complete)
-    {
-      onImageLoad();
-    }
-    else
-    {
-      image?.addEventListener('load', onImageLoad);
+    const hideSkeleton = () => {
+      item.classList.remove('skeleton--active');
+    };
+
+    if (image?.complete) {
+      hideSkeleton();
+    } else {
+      image?.addEventListener('load', hideSkeleton);
       image?.addEventListener('error', onImageError);
     }
   });

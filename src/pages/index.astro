@@ -1,6 +1,5 @@
 ---
-import Input from '@global/component/input.astro';
-import Modal from '@global/component/modal.astro';
+import Icon from '@global/component/icon.astro';
 import BaseLayout from '@global/layout/base_layout.astro';
 ---
 <BaseLayout
@@ -10,38 +9,8 @@ import BaseLayout from '@global/layout/base_layout.astro';
     title: ''
   }}
 >
-  <h1 class='header'>Hola mundo</h1>
-  <form class='form'>
-    <Input
-      required
-      name='world'
-      iconLeft='square'
-      label='Hola mundo'
-      iconRight='square'
-      placeholder='Ingresa un país'
-    />
-    <Input
-      name='world2'
-      label='Hola mundo'
-      placeholder='Ingresa un país'
-    />
-  </form>
-  <Modal
-    name='test'
-    title='Modal'
-    orientation='vertical'
-  >
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed officiis
-      explicabo saepe debitis id! Atque nobis quidem facere soluta, dolores
-      error dolor dolorem, deleniti, nesciunt provident rerum omnis
-      consequuntur quis.
-    </p>
-  </Modal>
-  <button id='modal'>
-    Modal
-  </button>
-  <p class='full' />
+  <h1>Hola mundo</h1>
+  <Icon name='square' />
 </BaseLayout>
 
 <script>

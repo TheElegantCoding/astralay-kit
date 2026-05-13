@@ -14,6 +14,7 @@ module.exports = {
       safelist: {
         standard: [
           /^delay-/,
+          /^alert--/,
           /active$/,
           /lenis/,
           /loading$/,

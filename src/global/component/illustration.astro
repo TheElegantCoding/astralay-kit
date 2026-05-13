@@ -42,10 +42,9 @@ const iconRaw = `${iconTitle}${iconContent}`;
   set:html={iconRaw}
   height={iconHeight}
   aria-hidden={!title}
-  class='illustration'
-  class:list={[classIllustration]}
   xmlns='http://www.w3.org/2000/svg'
   viewBox={`0 0 ${iconWidth} ${iconHeight}`}
   aria-label={title && capitalizeFirst(title)}
+  class:list={['illustration', classIllustration]}
   {...rest}
 />

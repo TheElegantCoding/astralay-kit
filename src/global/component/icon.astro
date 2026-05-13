@@ -30,9 +30,6 @@ if (!rawSvg) {
   throw new Error(`Icon "${name}" not found in global or module assets.`);
 }
 
-const widthMatch = rawSvg.match(/width="(?<width>.*?)"/);
-const heightMatch = rawSvg.match(/height="(?<height>.*?)"/);
-
 const innerSVG = (rawSvg as string)
   .replace(/<svg[^>]*>/, '')
   .replace(/<\/svg>/, '')
@@ -41,13 +38,12 @@ const innerSVG = (rawSvg as string)
 const iconTitle = title ? `<title>${capitalizeFirst(title)}</title>` : '';
 ---
 <svg
-  class='icon'
+  width={size}
+  height={size}
+  viewBox='0 0 64 64'
   class:list={classIcon}
   xmlns='http://www.w3.org/2000/svg'
   set:html={`${iconTitle}${innerSVG}`}
   aria-hidden={title ? 'false' : 'true'}
-  width={size ?? widthMatch?.groups?.width}
-  height={size ?? heightMatch?.groups?.height}
-  viewBox={`0 0 ${widthMatch?.groups?.width ?? 64} ${heightMatch?.groups?.height ?? 64}`}
   {...rest}
 />

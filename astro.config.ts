@@ -14,6 +14,9 @@ export default defineConfig({
     assetsPrefix: BASE_URL,
     inlineStylesheets: 'never'
   },
+  devToolbar: {
+    enabled: false
+  },
   integrations: [sitemap({ lastmod: new Date() }), partytown({ config: { forward: ['dataLayer.push'] } })],
   output: 'static',
   server: {

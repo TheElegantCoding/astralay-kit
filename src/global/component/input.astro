@@ -3,15 +3,14 @@ import Icon from '@global/component/icon.astro';
 
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'input'>
-  & {
-    label: string;
-    iconLeft?: string;
-    iconRight?: string;
-    required?: boolean;
-    textHelperLeft?: string;
-    textHelperRight?: string;
-  };
+type Props = HTMLAttributes<'input'> & {
+  label: string;
+  iconLeft?: string;
+  iconRight?: string;
+  required?: boolean;
+  textHelperLeft?: string;
+  textHelperRight?: string;
+};
 
 const {
   iconLeft,

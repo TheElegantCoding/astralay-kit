@@ -1,0 +1,57 @@
+---
+import Icon from './icon.astro';
+
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'div'> & {
+  id: string;
+  icon?: string;
+  title?: string;
+  message?: string;
+  duration?: number;
+  ariaLabelClose?: string;
+  type?: 'info' | 'error' | 'success' | 'warning';
+  position?: 'top-left' | 'top-right' | 'top-center' | 'bottom-left' | 'bottom-right' | 'bottom-center';
+};
+
+const {
+  title,
+  message,
+  duration = 5000,
+  icon,
+  id,
+  ariaLabelClose,
+  type = 'success',
+  position = 'bottom-right',
+  ...rest
+} = Astro.props;
+
+const hasSlot = Astro.slots.has('default');
+---
+<div
+  data-alert={id}
+  data-duration={duration}
+  class:list={`alert alert--${type} alert--${position}`}
+  {...rest}
+>
+  <button
+    data-alert-close
+    class='alert__container-icon-close'
+    aria-label={ariaLabelClose || 'Close'}
+  >
+    <Icon name='error' class='alert__icon-close' />
+  </button>
+  <div class='alert__container-icon'>
+    <Icon class='alert__icon' name={icon || (type === 'success' ? 'check' : type)} />
+  </div>
+  <div>
+    {hasSlot
+      ? <slot />
+      : (
+        <>
+          <div class='alert__title'>{title}</div>
+          <div class='alert__message'>{message}</div>
+        </>
+      )}
+  </div>
+</div>

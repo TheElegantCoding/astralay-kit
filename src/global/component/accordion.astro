@@ -1,0 +1,41 @@
+---
+import Icon from './icon.astro';
+
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'div'> & {
+  icon?: string;
+  title?: string;
+};
+
+const { title, icon = 'arrow_down' } = Astro.props;
+---
+<div data-accordion class='accordion'>
+  <button class='accordion__header'>
+    <span class='accordion__header-text'>{title}</span>
+    <div class='accordion__container-icon'>
+      <Icon name={icon} class='accordion__icon' />
+    </div>
+  </button>
+  <div class='accordion__container'>
+    <div class='accordion__padding'>
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  const accordion = document.querySelectorAll('[data-accordion]');
+
+  accordion.forEach((item) => {
+    const header = item.querySelector('.accordion__header');
+    const container = item.querySelector('.accordion__container');
+    const icon = item.querySelector('.accordion__icon');
+
+    header?.addEventListener('click', () => {
+      item?.classList.toggle('accordion--active');
+      container?.classList.toggle('accordion__container--active');
+      icon?.classList.toggle('accordion__icon--active');
+    });
+  });
+</script>

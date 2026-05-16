@@ -1,6 +1,7 @@
 ---
 import Accordion from '@global/component/accordion.astro';
 import Alert from '@global/component/alert.astro';
+import Button from '@global/component/button.astro';
 import Icon from '@global/component/icon.astro';
 import Illustration from '@global/component/illustration.astro';
 import Skeleton from '@global/component/skeleton.astro';
@@ -18,7 +19,7 @@ import BaseLayout from '@global/layout/base_layout.astro';
     <Icon name='square' />
     <Illustration name='logo_astralys' />
     <Skeleton class='custom-skeleton' />
-    <button id='alert'>
+    <button id='alert' class='button'>
       open alert
     </button>
     <Alert
@@ -31,6 +32,9 @@ import BaseLayout from '@global/layout/base_layout.astro';
     <Accordion title='Accordion'>
       <p>description</p>
     </Accordion>
+    <Button>
+      <p>description</p>
+    </Button>
   </main>
 </BaseLayout>
 

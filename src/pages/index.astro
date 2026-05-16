@@ -2,41 +2,49 @@
 import Accordion from '@global/component/accordion.astro';
 import Alert from '@global/component/alert.astro';
 import Button from '@global/component/button.astro';
+import CustomImage from '@global/component/custom_image.astro';
 import Icon from '@global/component/icon.astro';
 import Illustration from '@global/component/illustration.astro';
+
+import './../global/style/main.scss';
 import Skeleton from '@global/component/skeleton.astro';
-import BaseLayout from '@global/layout/base_layout.astro';
 ---
-<BaseLayout
-  metaData={{
-    description: '',
-    keywords: [],
-    title: ''
-  }}
->
-  <main class='base-layout'>
-    <h1>Hola mundo</h1>
-    <Icon name='square' />
-    <Illustration name='logo_astralys' />
-    <Skeleton class='custom-skeleton' />
-    <button id='alert' class='button'>
-      open alert
-    </button>
-    <Alert
-      id='test'
-      title='Alert'
-      type='success'
-      message='message'
-      position='bottom-right'
-    />
-    <Accordion title='Accordion'>
-      <p>description</p>
-    </Accordion>
-    <Button>
-      <p>description</p>
-    </Button>
-  </main>
-</BaseLayout>
+<main class='base-layout'>
+  <h1>Hola mundo</h1>
+  <Icon name='square' />
+  <Illustration name='logo_astralys' />
+  <Skeleton class='custom-skeleton' />
+  <button id='alert' class='button'>
+    open alert
+  </button>
+  <Alert
+    id='test'
+    title='Alert'
+    type='success'
+    message='message'
+    position='bottom-right'
+  />
+  <Accordion title='Accordion'>
+    <p>description</p>
+  </Accordion>
+  <Button>
+    <p>description</p>
+  </Button>
+  <CustomImage
+    alt='alt'
+    layout='constrained'
+    data-animate='fade-in-left'
+    src='/src/global/asset/image/image_placeholder.png'
+  />
+  <div class='section-test section-test__transparent' />
+  <div class='section-test'>
+    <div class='box scroll-zoom-in-left' />
+    <div class='box scroll-zoom-in-right' />
+    <div class='box scroll-zoom-in-up' />
+    <div class='box scroll-zoom-in-down' />
+  </div>
+
+</main>
 
 <script>
   import { animate } from '@global/util/animation';

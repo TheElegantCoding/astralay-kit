@@ -44,7 +44,7 @@
     "postcss": "8.5.14",
     "postcss-combine-media-query": "2.1.0",
     "sass": "1.99.0",
-    "stylelint-config-universal-code": "1.0.3",
+    "stylelint-config-universal-code": "1.0.6",
     "svgo": "4.0.1",
     "typescript": "6.0.3",
     "vite": "8.0.11"

@@ -1,0 +1,13 @@
+---
+type Props = {
+  text?: string;
+  variant?: 'outline' | 'rounded' | 'gradient';
+};
+
+const { text, variant } = Astro.props;
+
+const hasSlot = Astro.slots.has('default');
+---
+<div class:list={`button button--gradient ${variant ? `button--${variant}` : ''}`}>
+  {hasSlot ? <slot /> : <span>{text}</span>}
+</div>

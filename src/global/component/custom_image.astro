@@ -1,6 +1,4 @@
 ---
-import { removeTrailingSlash } from '@global/util/link';
-
 import { handleImage } from '../util/handle_image';
 import Skeleton from './skeleton.astro';
 
@@ -47,19 +45,6 @@ const { image, sources } = await handleImage({
   width,
   height
 });
-
-const baseUrl = removeTrailingSlash(Astro.site?.toString() || '');
-const imageUrl = source.startsWith('http') ? source : `${baseUrl}${image.src}`;
-
-const cleanedSources = sources.map((img) => {
-  const rawSrcset = img.srcSet.attribute || img.src;
-  const cleanSrcset = baseUrl ? `${baseUrl}${rawSrcset}` : rawSrcset;
-
-  return {
-    format: img.options.format,
-    srcset: cleanSrcset
-  };
-});
 ---
 <Skeleton
   class='custom-image'
@@ -68,17 +53,17 @@ const cleanedSources = sources.map((img) => {
 >
   <slot />
   <picture data-animate={rest['data-animate']}>
-    {cleanedSources.map((img) => {
+    {sources.map((img) => {
       return (
         <source
-          srcset={img.srcset}
-          type={`image/${img.format}`}
+          type={`image/${img.options.format}`}
+          srcset={img.attributes.srcSet || img.src}
         />
       );
     })}
     <img
       alt={alt}
-      src={imageUrl}
+      src={image.src}
       class='custom-image__tag'
       class:list={[classImage]}
       width={image.attributes.width}

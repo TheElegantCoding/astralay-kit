@@ -1,7 +1,6 @@
 @use 'global/style/config' as *;
 
-.accordion
-{
+.accordion {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -11,20 +10,17 @@
   box-shadow: $shadow_down_black_200;
   transition: border $ms_slow;
 
-  &:hover
-  {
+  &:hover {
     border: $spacing_2 solid $primary_500;
   }
 }
 
-.accordion--active
-{
+.accordion--active {
   border: $spacing_2 solid $primary_500;
   box-shadow: $shadow_down_black_200, 0 0 0 $spacing_3 $primary_300;
 }
 
-.accordion__header
-{
+.accordion__header {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -33,34 +29,29 @@
   padding: $spacing_16;
 }
 
-.accordion__header-text
-{
-  @include font_weight(bold);
+.accordion__header-text {
+  font-weight: font-weight(bold);
 
-  @include responsive(phone)
-  {
+  @include responsive(phone) {
     font-size: $h5;
   }
 }
 
-.accordion__container-icon
-{
+.accordion__container-icon {
   display: flex;
   padding: $spacing_8;
   background-color: $gray_200;
   border-radius: 0.6rem;
 }
 
-.accordion__icon
-{
+.accordion__icon {
   width: $spacing_12;
   height: $spacing_12;
   fill: $gray_500;
   transition: transform $ms_slow;
 }
 
-.accordion__container
-{
+.accordion__container {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -68,8 +59,7 @@
   padding: 0;
   transition: max-height 0.8s;
 
-  &::after
-  {
+  &::after {
     content: '';
     position: absolute;
     top: 0;
@@ -82,19 +72,16 @@
   }
 }
 
-.accordion__padding
-{
+.accordion__padding {
   padding: $spacing_16;
 }
 
-.accordion__icon--active
-{
+.accordion__icon--active {
   transform: rotate(180deg);
   transition: transform $ms_slow;
 }
 
-.accordion__container--active
-{
+.accordion__container--active {
   max-height: 1000px;
   transition: max-height 2.5s;
 }

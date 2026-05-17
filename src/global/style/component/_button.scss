@@ -17,6 +17,7 @@
   justify-content: space-between;
   margin-top: $spacing_20;
   padding: $spacing_8 $spacing_32;
+  font-weight: font-weight(semi_bold);
   color: $gray_50;
   background: $primary_700;
   border: none;
@@ -43,8 +44,6 @@
     height: 100%;
     background: linear-gradient(90deg, $transparent 0%, rgb(255, 255, 255, 0.4) 50%, $transparent 100%);
   }
-
-  @include font_weight(semi_bold);
 
   @include responsive(phone) {
     font-size: $h5;

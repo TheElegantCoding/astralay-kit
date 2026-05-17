@@ -1,13 +1,13 @@
 ---
-import Accordion from '@global/component/accordion.astro';
-import Alert from '@global/component/alert.astro';
-import Button from '@global/component/button.astro';
-import CustomImage from '@global/component/custom_image.astro';
-import Icon from '@global/component/icon.astro';
-import Illustration from '@global/component/illustration.astro';
+import Accordion from './../global/component/accordion.astro';
+import Alert from './../global/component/alert.astro';
+import Button from './../global/component/button.astro';
+import CustomImage from './../global/component/custom_image.astro';
+import Icon from './../global/component/icon.astro';
+import Illustration from './../global/component/illustration.astro';
 
 import './../global/style/main.scss';
-import Skeleton from '@global/component/skeleton.astro';
+import Skeleton from './../global/component/skeleton.astro';
 ---
 <main class='base-layout'>
   <h1>Hola mundo</h1>
@@ -47,9 +47,9 @@ import Skeleton from '@global/component/skeleton.astro';
 </main>
 
 <script>
-  import { animate } from '@global/util/animation';
-  import { toggleModal } from '@global/util/modal';
-  import { showAlert } from '@global/util/alert';
+  import { animate } from './../global/util/animation';
+  import { toggleModal } from './../global/util/modal';
+  import { showAlert } from './../global/util/alert';
 
   const button = document.querySelector('#modal');
   const buttonAlert = document.querySelector('#alert');

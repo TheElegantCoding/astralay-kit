@@ -1,5 +1,5 @@
 ---
-import { externalLink } from '@global/util/link';
+import { externalLink } from './../util/link';
 
 import type { HTMLAttributes } from 'astro/types';
 
@@ -11,7 +11,6 @@ type Props = HTMLAttributes<'a'> & {
 };
 
 const {
-  addLanguage = true,
   href,
   rel: relationship,
   target,
@@ -19,7 +18,6 @@ const {
 } = Astro.props;
 
 const link = externalLink({
-  addLanguage,
   href,
   relationship,
   site: Astro.site,

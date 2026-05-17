@@ -1,7 +1,5 @@
-const siteConfiguration =
-{
-  author:
-  {
+const siteConfiguration = {
+  author: {
     email: '',
     name: '',
     web: ''
@@ -10,8 +8,7 @@ const siteConfiguration =
   defaultLanguage: 'en',
   description: '',
   googleAnalyticId: '',
-  languages:
-  {
+  languages: {
     es: 'Español'
   },
   siteName: ''

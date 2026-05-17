@@ -61,6 +61,10 @@ img
   font-style: italic;
   vertical-align: middle;
   border-style: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 button

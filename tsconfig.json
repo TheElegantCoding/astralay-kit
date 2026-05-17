@@ -11,12 +11,6 @@
     "rootDir": "./",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "paths": {
-      "@global/*": ["src/global/*"],
-      "@module/*": ["src/module/*"],
-      "@public/*": ["public/*"],
-      "@script/*": ["script/*"]
-    },
     "ignoreDeprecations": "6.0",
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,

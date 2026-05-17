@@ -1,5 +1,6 @@
 import rss from '@astrojs/rss';
-import { siteConfiguration } from '@global/configuration/site_configuration';
+
+import { siteConfiguration } from './../global/configuration/site_configuration';
 
 export const GET = async () => {
   return rss({

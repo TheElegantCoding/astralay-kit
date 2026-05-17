@@ -1,8 +1,23 @@
 @use 'global/style/config' as *;
 
-.custom-skeleton
-{
+.custom-skeleton {
   display: block;
   width: 100px;
   height: 100px;
+}
+
+.section-test {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.section-test__transparent {
+  background-color: transparent;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
 }

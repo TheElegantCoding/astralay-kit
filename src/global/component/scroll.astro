@@ -1,8 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'div'> &
-{
+type Props = HTMLAttributes<'div'> & {
   class?: string;
   orientation?: 'vertical' | 'horizontal';
 };
@@ -12,24 +11,24 @@ const { class: classScroll, orientation = 'horizontal' } = Astro.props;
 <div
   data-scroll
   class='scroll'
-  class:list={[ classScroll ]}
+  class:list={[classScroll]}
 >
   <div
     data-scroll-start
     class='scroll__fade'
-    class:list={[ orientation === 'vertical' && 'scroll__fade-vertical' ]}
+    class:list={[orientation === 'vertical' && 'scroll__fade-vertical']}
   />
   <div
     data-scroll-container
     class='scroll__container'
-    class:list={[ classScroll, orientation === 'vertical' && 'scroll__container-vertical' ]}
+    class:list={[classScroll, orientation === 'vertical' && 'scroll__container-vertical']}
   >
     <slot />
   </div>
   <div
     data-scroll-end
     class='scroll__fade scroll__fade-bottom'
-    class:list={[ orientation === 'vertical' && 'scroll__fade-vertical scroll__fade-vertical-right' ]}
+    class:list={[orientation === 'vertical' && 'scroll__fade-vertical scroll__fade-vertical-right']}
   />
 </div>
 

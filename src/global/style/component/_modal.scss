@@ -1,7 +1,6 @@
 @use 'global/style/config' as *;
 
-.modal
-{
+.modal {
   position: fixed;
   z-index: $z_100;
   top: 0;
@@ -19,21 +18,18 @@
   transition: visibility 0.5s, opacity 0.5s;
 }
 
-.modal--active
-{
+.modal--active {
   visibility: visible;
   opacity: 1;
 }
 
-.modal--active .modal__overlay
-{
+.modal--active .modal__overlay {
   z-index: $z_90;
   visibility: visible;
   opacity: 1;
 }
 
-.modal__container
-{
+.modal__container {
   z-index: $z_100;
   transform: scale(0.5);
   width: 100%;
@@ -45,13 +41,11 @@
   transition: transform 0.5s;
 }
 
-.modal--active .modal__container
-{
+.modal--active .modal__container {
   transform: scale(1);
 }
 
-.modal__container-title
-{
+.modal__container-title {
   position: relative;
   display: flex;
   align-items: center;
@@ -59,8 +53,7 @@
   width: 100%;
   margin-bottom: $spacing_32;
 
-  &::before
-  {
+  &::before {
     content: '';
     position: absolute;
     bottom: -$spacing_12;
@@ -72,34 +65,28 @@
   }
 }
 
-.modal__title
-{
+.modal__title {
   font-size: $h4;
+  font-weight: font-weight(extra_bold);
 
-  @include font_weight(extra_bold);
-
-  @include responsive(phone)
-  {
+  @include responsive(phone) {
     font-size: $h3;
   }
 }
 
-.modal__icon-close
-{
+.modal__icon-close {
   width: $spacing_16;
   height: $spacing_16;
   fill: $gray_500;
   transition: fill 0.5s;
 
-  @include responsive(phone)
-  {
+  @include responsive(phone) {
     width: 1.8rem;
     height: 1.8rem;
   }
 }
 
-.modal__button-close
-{
+.modal__button-close {
   cursor: pointer;
   display: flex;
   padding: $spacing_8;
@@ -107,23 +94,19 @@
   border-radius: 0.8rem;
   transition: background-color 0.5s;
 
-  &:hover
-  {
+  &:hover {
     background-color: $primary_200;
   }
 
-  &:hover .modal__icon-close
-  {
+  &:hover .modal__icon-close {
     fill: $primary_500;
   }
 }
 
-.modal__content
-{
+.modal__content {
   max-height: 60vh;
 }
 
-body:has(.modal--active)
-{
+body:has(.modal--active) {
   overflow: hidden;
 }

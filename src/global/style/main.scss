@@ -1,23 +1,11 @@
 @charset 'UTF-8';
 
-// Vendors
-@use './vendor/normalize';
-@use './vendor/reset';
+// Global styles for the project
+@use 'sasslys';
 
-// Base
+// Base styles
 @use './base/base';
 @use './base/typography';
-
-// Layout
-@use './layout/base_layout';
-
-// Animation
-@use './animation/fade_animation';
-@use './animation/slide_animation';
-@use './animation/text_animation';
-@use './animation/special_animation';
-@use './animation/zoom_animation';
-@use './animation/blur_animation';
 
 // Components
 @use './component/skeleton';
@@ -32,19 +20,4 @@
 @use './component/button';
 
 // Modules and pages
-@use './page/not_found';
 @use './page/index';
-
-// Helpers
-@use './helper/aspect_ratio';
-@use './helper/z_index';
-@use './helper/object_fit';
-@use './helper/animation_delay';
-@use './helper/cursor';
-@use './helper/opacity';
-@use './helper/pointer_event';
-@use './helper/rotate';
-@use './helper/overflow';
-@use './helper/position';
-@use './helper/text_align';
-@use './helper/display';

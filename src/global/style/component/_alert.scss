@@ -1,7 +1,6 @@
 @use 'global/style/config' as *;
 
-.alert
-{
+.alert {
   position: fixed;
   z-index: $z_popover;
   transform: translateY(-$spacing_32);
@@ -18,48 +17,40 @@
   box-shadow: $shadow_down_black_300;
   transition: border-color $ms_base, transform $ms_base, opacity $ms_base, visibility $ms_base;
 
-  @include responsive(phone)
-  {
+  @include responsive(phone) {
     width: 100%;
     max-width: 350px;
   }
 
-  &:hover
-  {
+  &:hover {
     border-color: $success_500;
   }
 }
 
-.alert--active
-{
+.alert--active {
   transform: translateY(0);
   visibility: visible;
   opacity: 1;
 }
 
-.alert__title
-{
-  @include font_weight(bold);
+.alert__title {
+  font-weight: font-weight(bold);
 
-  @include responsive(phone)
-  {
+  @include responsive(phone) {
     font-size: $h5;
   }
 }
 
-.alert__message
-{
+.alert__message {
   font-size: $sm;
   color: $neutral_800;
 
-  @include responsive(phone)
-  {
+  @include responsive(phone) {
     font-size: $h6;
   }
 }
 
-.alert__icon-close
-{
+.alert__icon-close {
   display: flex;
   width: $spacing_12;
   height: $spacing_12;
@@ -67,8 +58,7 @@
   transition: fill 0.5s;
 }
 
-.alert__container-icon-close
-{
+.alert__container-icon-close {
   cursor: pointer;
   position: absolute;
   top: $spacing_12;
@@ -78,189 +68,156 @@
   border-radius: 0.6rem;
   transition: background-color 0.5s;
 
-  &:hover
-  {
+  &:hover {
     background-color: $gray_300;
   }
 
-  &:hover .alert__icon-close
-  {
+  &:hover .alert__icon-close {
     fill: $gray_700;
   }
 }
 
-.alert__container-icon
-{
+.alert__container-icon {
   display: flex;
   padding: $spacing_8;
   background-color: $success_300;
   border-radius: $rounded_half;
 }
 
-.alert__icon
-{
+.alert__icon {
   width: $spacing_12;
   height: $spacing_12;
   fill: $success_800;
 }
 
-.alert--error:hover
-{
+.alert--error:hover {
   border-color: $danger_500;
 }
 
-.alert--error .alert__container-icon
-{
+.alert--error .alert__container-icon {
   background-color: $danger_300;
 }
 
-.alert--error .alert__icon
-{
+.alert--error .alert__icon {
   fill: $danger_800;
 }
 
-.alert--warning:hover
-{
+.alert--warning:hover {
   border-color: $warning_500;
 }
 
-.alert--warning .alert__container-icon
-{
+.alert--warning .alert__container-icon {
   background-color: $warning_300;
 }
 
-.alert--warning .alert__icon
-{
+.alert--warning .alert__icon {
   fill: $warning_800;
 }
 
-.alert--info:hover
-{
+.alert--info:hover {
   border-color: $information_500;
 }
 
-.alert--info .alert__container-icon
-{
+.alert--info .alert__container-icon {
   background-color: $information_300;
 }
 
-.alert--info .alert__icon
-{
+.alert--info .alert__icon {
   fill: $information_800;
 }
 
-.alert--bottom-right
-{
+.alert--bottom-right {
   right: $spacing_20;
   bottom: $spacing_20;
 
-  @include responsive(small_table)
-  {
+  @include responsive(small_table) {
     right: $spacing_32;
     bottom: $spacing_32;
   }
 
-  @include responsive(small_desktop)
-  {
+  @include responsive(small_desktop) {
     right: $spacing_64;
     bottom: $spacing_64;
   }
 }
 
-.alert--bottom-center
-{
+.alert--bottom-center {
   bottom: $spacing_20;
   left: 50%;
   transform: translateX(-50%);
 
-  @include responsive(small_table)
-  {
+  @include responsive(small_table) {
     bottom: $spacing_32;
   }
 
-  @include responsive(small_desktop)
-  {
+  @include responsive(small_desktop) {
     bottom: $spacing_64;
   }
 }
 
-.alert--bottom-left
-{
+.alert--bottom-left {
   bottom: $spacing_20;
   left: $spacing_20;
 
-  @include responsive(small_table)
-  {
+  @include responsive(small_table) {
     bottom: $spacing_32;
     left: $spacing_32;
   }
 
-  @include responsive(small_desktop)
-  {
+  @include responsive(small_desktop) {
     bottom: $spacing_64;
     left: $spacing_64;
   }
 }
 
-.alert--top-right
-{
+.alert--top-right {
   top: $spacing_20;
   right: $spacing_20;
 
-  @include responsive(small_table)
-  {
+  @include responsive(small_table) {
     top: $spacing_32;
     right: $spacing_32;
   }
 
-  @include responsive(small_desktop)
-  {
+  @include responsive(small_desktop) {
     top: $spacing_64;
     right: $spacing_64;
   }
 }
 
-.alert--top-left
-{
+.alert--top-left {
   top: $spacing_20;
   left: $spacing_20;
 
-  @include responsive(small_table)
-  {
+  @include responsive(small_table) {
     top: $spacing_32;
     left: $spacing_32;
   }
 
-  @include responsive(small_desktop)
-  {
+  @include responsive(small_desktop) {
     top: $spacing_64;
     left: $spacing_64;
   }
 }
 
-.alert--top-center
-{
+.alert--top-center {
   top: $spacing_20;
   left: 50%;
   transform: translateX(-50%);
 
-  @include responsive(small_table)
-  {
+  @include responsive(small_table) {
     top: $spacing_32;
   }
 
-  @include responsive(small_desktop)
-  {
+  @include responsive(small_desktop) {
     top: $spacing_64;
   }
 }
 
-.alert--behind
-{
+.alert--behind {
   transform: scale(0.95) translateY(-$spacing_12);
 }
 
-.alert--behind-third
-{
+.alert--behind-third {
   transform: scale(0.9) translateY(-$spacing_24);
 }

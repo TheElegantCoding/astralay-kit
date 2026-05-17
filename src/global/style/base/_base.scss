@@ -1,15 +1,13 @@
 @use 'global/style/config' as *;
 
-html
-{
+html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
   width: 100%;
   font-size: 62.5%;
 }
 
-body
-{
+body {
   overflow-x: hidden;
   width: 100%;
   min-height: 100vh;
@@ -24,8 +22,7 @@ body
   @include font_weight(regular);
 }
 
-[data-animate]
-{
+[data-animate] {
   will-change: transform, opacity;
   transform: none;
   transition: none;

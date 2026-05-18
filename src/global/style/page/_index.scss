@@ -1,3 +1,4 @@
+/* stylelint-disable @stylistic/max-line-length */
 @use 'global/style/config' as *;
 
 .custom-skeleton {
@@ -8,6 +9,7 @@
 
 .section-test {
   display: flex;
+  align-items: center;
   justify-content: center;
   min-height: 100vh;
 }
@@ -17,7 +19,14 @@
 }
 
 .box {
+  display: block;
   width: 100px;
+  min-width: 100px;
   height: 100px;
   background-color: #3498db;
+}
+
+.scroll-test {
+  height: 300px;
+  margin-top: $spacing_20;
 }

@@ -1,8 +1,9 @@
+/* stylelint-disable selector-no-qualifying-type */
 @use 'global/style/config' as *;
 
 .modal {
   position: fixed;
-  z-index: $z_100;
+  z-index: $z_popover;
   top: 0;
   left: 0;
   display: flex;
@@ -15,7 +16,7 @@
   background-color: transparent;
   border: none;
   outline: none;
-  transition: visibility 0.5s, opacity 0.5s;
+  transition: visibility $ms_slow, opacity $ms_slow;
 }
 
 .modal--active {
@@ -24,21 +25,21 @@
 }
 
 .modal--active .modal__overlay {
-  z-index: $z_90;
+  z-index: $z_overlay;
   visibility: visible;
   opacity: 1;
 }
 
 .modal__container {
-  z-index: $z_100;
+  z-index: $z_popover;
   transform: scale(0.5);
   width: 100%;
   max-width: 100rem;
-  padding: $spacing_28;
+  padding: $spacing_20;
   background-color: $gray_100;
   border-radius: $rounded_small;
   box-shadow: $shadow_down_black_600;
-  transition: transform 0.5s;
+  transition: transform $ms_slow;
 }
 
 .modal--active .modal__container {
@@ -66,40 +67,35 @@
 }
 
 .modal__title {
-  font-size: $h4;
+  font-size: $h5;
   font-weight: font-weight(extra_bold);
 
   @include responsive(phone) {
-    font-size: $h3;
+    font-size: $h4;
   }
 }
 
 .modal__icon-close {
-  width: $spacing_16;
-  height: $spacing_16;
+  display: flex;
+  width: $spacing_12;
+  height: $spacing_12;
   fill: $gray_500;
-  transition: fill 0.5s;
-
-  @include responsive(phone) {
-    width: 1.8rem;
-    height: 1.8rem;
-  }
+  transition: fill $ms_slow;
 }
 
 .modal__button-close {
   cursor: pointer;
-  display: flex;
   padding: $spacing_8;
-  background-color: $gray_300;
-  border-radius: 0.8rem;
-  transition: background-color 0.5s;
+  background-color: $gray_200;
+  border-radius: 0.6rem;
+  transition: background-color $ms_slow;
 
   &:hover {
-    background-color: $primary_200;
+    background-color: $gray_300;
   }
 
   &:hover .modal__icon-close {
-    fill: $primary_500;
+    fill: $gray_700;
   }
 }
 

@@ -1,16 +1,20 @@
 ---
+import Modal from 'src/global/component/modal.astro';
+import Overlay from 'src/global/component/overlay.astro';
+import Scroll from 'src/global/component/scroll.astro';
+
 import Accordion from './../global/component/accordion.astro';
 import Alert from './../global/component/alert.astro';
+
+import './../global/style/main.scss';
 import Button from './../global/component/button.astro';
 import CustomImage from './../global/component/custom_image.astro';
 import Icon from './../global/component/icon.astro';
 import Illustration from './../global/component/illustration.astro';
-
-import './../global/style/main.scss';
 import Skeleton from './../global/component/skeleton.astro';
 ---
 <main class='base-layout'>
-  <h1>Hola mundo</h1>
+  <h1 class='text-gradient'>Hola mundo</h1>
   <Icon name='square' />
   <Illustration name='logo_astralys' />
   <Skeleton class='custom-skeleton' />
@@ -27,8 +31,9 @@ import Skeleton from './../global/component/skeleton.astro';
   <Accordion title='Accordion'>
     <p>description</p>
   </Accordion>
-  <Button>
-    <p>description</p>
+  <Overlay />
+  <Button id='modal'>
+    Open modal
   </Button>
   <CustomImage
     alt='alt'
@@ -36,6 +41,21 @@ import Skeleton from './../global/component/skeleton.astro';
     data-animate='fade-in-left'
     src='/src/global/asset/image/image_placeholder.png'
   />
+  <Modal id='test' title='Modal'>
+    <h1>Hola mundo</h1>
+  </Modal>
+  <Scroll class='scroll-test' orientation='vertical'>
+    <div class='box' />
+    <div class='box' />
+    <div class='box' />
+    <div class='box' />
+    <div class='box' />
+    <div class='box' />
+    <div class='box' />
+  </Scroll>
+  <div class='section-test'>
+    <p class='text-reveal'>lorem ipsum dolor sit amet </p>
+  </div>
   <div class='section-test section-test__transparent' />
   <div class='section-test'>
     <div class='box scroll-zoom-in-left' />
@@ -53,9 +73,11 @@ import Skeleton from './../global/component/skeleton.astro';
 
   const button = document.querySelector('#modal');
   const buttonAlert = document.querySelector('#alert');
+  const buttonModal = document.querySelector('#test');
 
   button?.addEventListener('click', () => toggleModal('test'))
   buttonAlert?.addEventListener('click', () => showAlert('test'))
+  buttonModal?.addEventListener('click', () => toggleModal('test'))
 
   animate();
 </script>

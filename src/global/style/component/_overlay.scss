@@ -1,9 +1,8 @@
 @use 'global/style/config' as *;
 
-.overlay
-{
+.overlay {
   position: fixed;
-  z-index: $z_50;
+  z-index: $z_overlay;
   top: 0;
   left: 0;
   display: block;
@@ -12,11 +11,10 @@
   visibility: hidden;
   opacity: 0;
   background-color: rgba($black, 0.5);
-  transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity $ms_slow, visibility $ms_slow;
 }
 
-.overlay--active
-{
+.overlay--active {
   visibility: visible;
   opacity: 1;
 }

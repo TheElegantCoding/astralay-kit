@@ -1,23 +1,52 @@
 @charset 'UTF-8';
 
-// Global styles for the project
-@use 'sasslys';
+// Vendors
+@use './vendor/normalize';
+@use './vendor/reset';
 
 // Base styles
 @use './base/base';
 @use './base/typography';
 
+// Layout
+@use './layout/base_layout';
+
 // Components
-@use './component/skeleton';
 @use './component/custom_image';
-@use './component/scrollbar';
 @use './component/illustration';
+@use './component/scrollbar';
+@use './component/skeleton';
 @use './component/icon';
-@use './component/text_animated';
 @use './component/input';
 @use './component/alert';
-@use './component/accordion';
+@use './component/modal';
+@use './component/scroll';
 @use './component/button';
+@use './component/overlay';
+@use './component/accordion';
+@use './component/text_animated';
 
 // Modules and pages
 @use './page/index';
+
+// Animation
+@use './animation/fade_animation';
+@use './animation/slide_animation';
+@use './animation/text_animation';
+@use './animation/special_animation';
+@use './animation/zoom_animation';
+@use './animation/blur_animation';
+
+// Helpers
+@use './helper/aspect_ratio';
+@use './helper/z_index';
+@use './helper/object_fit';
+@use './helper/animation_delay';
+@use './helper/cursor';
+@use './helper/opacity';
+@use './helper/pointer_event';
+@use './helper/rotate';
+@use './helper/overflow';
+@use './helper/position';
+@use './helper/text_align';
+@use './helper/display';

@@ -6,20 +6,20 @@ import Scroll from './../component/scroll.astro';
 import type { ScrollComponentProps } from './../type/scroll_type';
 
 type Props = ScrollComponentProps & {
-  name: string;
+  id: string;
   title?: string;
   classScroll?: string;
 };
 
 const {
   classScroll,
-  name,
+  id,
   orientation,
   title
 } = Astro.props;
 ---
 <dialog
-  data-modal={name}
+  data-modal={id}
   class='base-layout modal'
 >
   <Overlay data-modal-overlay class='modal__overlay' />

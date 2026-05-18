@@ -1,13 +1,26 @@
 ---
-type Props = {
-  text?: string;
-  variant?: 'outline' | 'rounded' | 'gradient';
+import type { HTMLAttributes } from 'astro/types';
+
+type ButtonProps = HTMLAttributes<'button'> & {
+  readonly text?: string;
+  readonly class?: string;
+  readonly variant?: 'outline' | 'rounded' | 'gradient';
 };
 
-const { text, variant } = Astro.props;
+type Props = ButtonProps;
+
+const {
+  text,
+  class: classButton,
+  variant,
+  ...rest
+} = Astro.props;
 
 const hasSlot = Astro.slots.has('default');
 ---
-<div class:list={`button button--gradient ${variant ? `button--${variant}` : ''}`}>
+<div
+  class:list={classButton}
+  class:list={`button ${variant ? `button--${variant}` : ''}`}
+  {...rest}>
   {hasSlot ? <slot /> : <span>{text}</span>}
 </div>

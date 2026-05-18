@@ -1,12 +1,17 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'span'>;
+export type OverlayProps = HTMLAttributes<'span'> & {
+  readonly class?: string;
+  readonly visible?: boolean;
+};
 
-const { class: classOverlay, ...rest } = Astro.props;
+type Props = OverlayProps;
+
+const { class: classOverlay, visible, ...rest } = Astro.props;
 ---
 <span
   class='overlay'
-  class:list={[classOverlay]}
+  class:list={[classOverlay, visible && 'overlay--active']}
   {...rest}
 />

@@ -1,19 +1,20 @@
 ---
-import Modal from 'src/global/component/modal.astro';
-import Overlay from 'src/global/component/overlay.astro';
-import Scroll from 'src/global/component/scroll.astro';
-
 import Accordion from './../global/component/accordion.astro';
 import Alert from './../global/component/alert.astro';
-
-import './../global/style/main.scss';
 import Button from './../global/component/button.astro';
 import CustomImage from './../global/component/custom_image.astro';
 import Icon from './../global/component/icon.astro';
 import Illustration from './../global/component/illustration.astro';
+import Modal from './../global/component/modal.astro';
+import Navbar from './../global/component/navbar.astro';
+import Overlay from './../global/component/overlay.astro';
+import Scroll from './../global/component/scroll.astro';
 import Skeleton from './../global/component/skeleton.astro';
+
+import './../global/style/main.scss';
 ---
 <main class='base-layout'>
+  <Navbar />
   <h1 class='text-gradient'>Hola mundo</h1>
   <Icon name='square' />
   <Illustration name='logo_astralys' />

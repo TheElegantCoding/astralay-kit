@@ -1,0 +1,107 @@
+---
+import Icon from './icon.astro';
+import Illustration from './illustration.astro';
+import NavbarLink from './navbar_link.astro';
+import Overlay from './overlay.astro';
+---
+<nav
+  data-navbar
+  class='navbar'
+  role='navigation'
+  aria-label='Main Navigation'
+>
+  <Overlay class='navbar__overlay' />
+  <div class='base-layout navbar__container'>
+    <Illustration name='logo_astralys' />
+    <ul class='navbar__menu'>
+      <li>
+        <button class='navbar__button-close'>
+          <Icon name='error' class='navbar__icon-close' />
+        </button>
+      </li>
+      <NavbarLink href='/'>Home</NavbarLink>
+      <NavbarLink href='/about'>About</NavbarLink>
+      <NavbarLink href='/contact'>Contact</NavbarLink>
+    </ul>
+    <button class='navbar__button-open'>
+      <Icon name='menu' class='navbar__icon-open' />
+    </button>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.querySelector('[data-navbar]');
+  const openButton = navbar?.querySelector('.navbar__button-open');
+  const closeButton = navbar?.querySelector('.navbar__button-close');
+  const overlay = navbar?.querySelector('.navbar__overlay');
+  const navbarLink = document.querySelectorAll<HTMLAnchorElement>('.navbar__link');
+  const html = document.querySelector('html');
+  const smallTabletBreakpoint = 768;
+  let lastScroll = 0;
+
+  const toggleTransition = () => {
+    if(window.innerWidth >= smallTabletBreakpoint) {
+      navbar?.classList.remove('navbar--transition');
+      return;
+    };
+
+    navbar?.classList.add('navbar--transition');
+  }
+
+  const toggleNavbar = () => {
+    if(window.innerWidth >= smallTabletBreakpoint) return;
+
+    navbar?.classList.add('navbar--transition');
+    navbar?.classList.toggle('navbar--active');
+    overlay?.classList.toggle('overlay--active');
+    html?.classList.toggle('overflow-hidden');
+  }
+
+  const navbarScroll = () => {
+    const currentScroll = window.scrollY;
+
+    if(currentScroll <= 0) {
+      navbar?.classList.remove('navbar--scroll-up');
+    }
+
+    if(currentScroll > lastScroll && !navbar?.classList.contains('navbar--scroll-down')) {
+      navbar?.classList.remove('navbar--scroll-up');
+      navbar?.classList.add('navbar--scroll-down');
+    }
+
+    if(currentScroll < lastScroll && navbar?.classList.contains('navbar--scroll-down')) {
+      navbar?.classList.add('navbar--scroll-up');
+      navbar?.classList.remove('navbar--scroll-down');
+    }
+
+    lastScroll = currentScroll;
+  };
+
+  const navbarActiveLink = () => {
+    navbarLink.forEach((link) => {
+      link.classList.remove('navbar__link--active');
+
+      if(link.href === window.location.href) {
+        link.classList.add('navbar__link--active');
+      }
+    });
+  };
+
+  window.addEventListener('resize', toggleTransition);
+  window.addEventListener('scroll', navbarScroll);
+  window.addEventListener('load', () => {
+    toggleTransition();
+    navbarScroll();
+    navbarActiveLink();
+  });
+  openButton?.addEventListener('click', toggleNavbar);
+  closeButton?.addEventListener('click', toggleNavbar);
+  overlay?.addEventListener('click', toggleNavbar);
+  navbarLink.forEach(link => {
+    link.addEventListener('click', () => {
+      if(window.innerWidth >= smallTabletBreakpoint) return;
+
+      toggleNavbar();
+    });
+  });
+</script>
